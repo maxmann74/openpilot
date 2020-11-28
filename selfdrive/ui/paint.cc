@@ -749,7 +749,7 @@ static void bb_ui_draw_measures_right(UIState *s, int bb_x, int bb_y, int bb_w )
     bb_ry = bb_y + bb_h;
   }
     //engineRPM
-  if (true) {
+  if (false) {
     char val_str[16];
     char uom_str[4];
     NVGcolor val_color = nvgRGBA(255, 255, 255, 200);
