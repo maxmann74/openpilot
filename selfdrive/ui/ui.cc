@@ -25,8 +25,7 @@ int write_param_float(float param, const char* param_name, bool persistent_param
 }
 
 void ui_init(UIState *s) {
-
-  s->sm = new SubMaster({"modelV2", "controlsState", "uiLayoutState", "liveCalibration", "radarState", "thermal",
+  s->sm = new SubMaster({"modelV2", "controlsState", "uiLayoutState", "liveCalibration", "radarState", "thermal", "frame",
                          "health", "carParams", "ubloxGnss", "driverState", "dMonitoringState", "sensorEvents", "carState", "gpsLocationExternal"});
 
   s->started = false;

@@ -549,7 +549,7 @@ static void bb_ui_draw_measures_left(UIState *s, int bb_x, int bb_y, int bb_w ) 
     bb_ry = bb_y + bb_h;
   }
   //add Ublox GPS accuracy
-  if (false) {
+  if (scene->gpsAccuracyUblox != 0.00) {
     char val_str[16];
     char uom_str[3];
     NVGcolor val_color = nvgRGBA(255, 255, 255, 200);
@@ -577,7 +577,7 @@ static void bb_ui_draw_measures_left(UIState *s, int bb_x, int bb_y, int bb_w ) 
     bb_ry = bb_y + bb_h;
   }
   //add altitude
-  if (false) {
+  if (scene->gpsAccuracyUblox != 0.00) {
     char val_str[16];
     char uom_str[3];
     NVGcolor val_color = nvgRGBA(255, 255, 255, 200);
@@ -749,7 +749,7 @@ static void bb_ui_draw_measures_right(UIState *s, int bb_x, int bb_y, int bb_w )
     bb_ry = bb_y + bb_h;
   }
     //engineRPM
-  if (false) {
+  if (true) {
     char val_str[16];
     char uom_str[4];
     NVGcolor val_color = nvgRGBA(255, 255, 255, 200);
@@ -809,9 +809,9 @@ static void ui_draw_vision_alert(UIState *s) {
   color.a *= s->alert_blinking_alpha;
   int alr_s = alert_size_map[scene->alert_size];
 
-  const int alr_x = scene->viz_rect.x - bdr_s;
-  const int alr_w = scene->viz_rect.w + (bdr_s*2);
-  const int alr_h = alr_s+(scene->alert_size==cereal::ControlsState::AlertSize::NONE?0:bdr_s);
+  const int alr_x = scene->viz_rect.x - bdr_is;
+  const int alr_w = scene->viz_rect.w + (bdr_is*2);
+  const int alr_h = alr_s+(scene->alert_size==cereal::ControlsState::AlertSize::NONE?0:bdr_is);
   const int alr_y = s->fb_h-alr_h;
 
   ui_draw_rect(s->vg, alr_x, alr_y, alr_w, alr_h, color);
