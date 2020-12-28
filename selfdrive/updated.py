@@ -34,9 +34,9 @@ import threading
 from pathlib import Path
 from typing import List, Tuple, Optional
 
-from common.hardware import ANDROID, TICI
 from common.basedir import BASEDIR
 from common.params import Params
+from selfdrive.hardware import EON, TICI
 from selfdrive.swaglog import cloudlog
 from selfdrive.controls.lib.alertmanager import set_offroad_alert
 
@@ -292,7 +292,7 @@ def fetch_update(wait_helper: WaitTimeHelper) -> bool:
       ]
       cloudlog.info("git reset success: %s", '\n'.join(r))
 
-      if ANDROID:
+      if EON:
         handle_neos_update(wait_helper)
 
     # Create the finalized, ready-to-swap update
@@ -310,12 +310,11 @@ def main():
   if params.get("DisableUpdates") == b"1":
     raise RuntimeError("updates are disabled by the DisableUpdates param")
 
-  # TODO: enable this before 0.8.1 release
-  #leon = "letv" in open("/proc/cmdline").read()
-  #if ANDROID and not leon:
-  #  raise RuntimeError("updates are disabled due to device deprecation")
+  # TODO: remove this after next release
+  if EON and "letv" not in open("/proc/cmdline").read():
+    raise RuntimeError("updates are disabled due to device deprecation")
 
-  if ANDROID and os.geteuid() != 0:
+  if EON and os.geteuid() != 0:
     raise RuntimeError("updated must be launched as root!")
 
   # Set low io priority
