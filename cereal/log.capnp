@@ -631,7 +631,6 @@ struct ModelData {
   frameDropPerc @13 :Float32;
   timestampEof @9 :UInt64;
   modelExecutionTime @14 :Float32;
-  gpuExecutionTime @16 :Float32;
   rawPred @15 :Data;
 
   path @1 :PathData;
@@ -700,7 +699,6 @@ struct ModelDataV2 {
   frameDropPerc @2 :Float32;
   timestampEof @3 :UInt64;
   modelExecutionTime @15 :Float32;
-  gpuExecutionTime @17 :Float32;
   rawPred @16 :Data;
 
   position @4 :XYZTData;

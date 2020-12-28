@@ -6,7 +6,7 @@ import struct
 import subprocess
 
 from cereal import log
-from selfdrive.hardware.base import HardwareBase
+from common.hardware_base import HardwareBase
 
 NetworkType = log.ThermalData.NetworkType
 NetworkStrength = log.ThermalData.NetworkStrength
@@ -97,12 +97,6 @@ class Android(HardwareBase):
       *reason_args,
       "i32", "1"  # wait
     ])
-
-  def uninstall(self):
-    with open('/cache/recovery/command', 'w') as f:
-      f.write('--wipe_data\n')
-    # IPowerManager.reboot(confirm=false, reason="recovery", wait=true)
-    self.reboot(reason="recovery")
 
   def get_sim_info(self):
     # Used for athena
