@@ -447,8 +447,8 @@ class CarInterface(CarInterfaceBase):
                                                                          tire_stiffness_factor=tire_stiffness_factor)
 
     if candidate in HONDA_BOSCH:
-      ret.gasMaxBP = [0.0, 1.4082, 2.80311, 4.22661, 5.38271, 6.16561, 7.24781, 8.28308, 10.24465, 12.96402, 15.42303, 18.11903, 20.11703, 24.46614, 29.05805, 32.71015, 35.76326, 40] # m/s
-      ret.gasMaxV = [0.39, 0.36, 0.32, 0.27, 0.24, 0.26, 0.25, 0.24, 0.24, 0.22, 0.18, 0.15, 0.14, 0.14, 0.13, 0.13, 0.11, 0.09]
+      ret.gasMaxBP = [0.0, 5., 10., 22., 35.] # m/s
+      ret.gasMaxV = [0.36, 0.24, 0.18, 0.16, 0.12]
       ret.brakeMaxBP = [5., 20.]  # m/s
       ret.brakeMaxV = [1., 0.8]   # max brake allowed
     else:
