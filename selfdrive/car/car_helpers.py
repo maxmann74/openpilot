@@ -85,7 +85,7 @@ def only_toyota_left(candidate_cars):
 
 # **** for use live only ****
 def fingerprint(logcan, sendcan):
-  fixed_fingerprint = "HONDA CIVIC HATCHBACK 2017 SEDAN/COUPE 2019"
+  fixed_fingerprint = "HONDA CR-V 2017 EX"
   skip_fw_query = True
   
   if not fixed_fingerprint and not skip_fw_query:
@@ -173,8 +173,8 @@ def fingerprint(logcan, sendcan):
 def get_car(logcan, sendcan):
   candidate, fingerprints, vin, car_fw, source = fingerprint(logcan, sendcan)
   
-  candidate = "HONDA CIVIC HATCHBACK 2017 SEDAN/COUPE 2019"
-  vin = "SHHFK7H30HU216373"
+  candidate = "HONDA CR-V 2017 EX"
+  vin = "2HKRW2H56HH666201"
   car_fw = []
   has_relay = True
 
