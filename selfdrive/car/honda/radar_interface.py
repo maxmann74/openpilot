@@ -103,7 +103,7 @@ class RadarInterface(RadarInterfaceBase):
         # self.extPts = {}
         self.valid_cnt = {key: 0 for key in RADAR_A_MSGS}
         self.rcp = _create_tesla_can_parser(CP.carFingerprint)
-        self.radarOffset = float(params.get("TeslaRadarOffset")) #hopefully this doesn't break anything
+        self.radarOffset = -0.58 #hopefully this doesn't break anything
         self.trackId = 1
         self.trigger_start_msg = RADAR_A_MSGS[0]
         self.trigger_end_msg = RADAR_B_MSGS[-1]
