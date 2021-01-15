@@ -526,10 +526,11 @@ def main():
     ("IsLdwEnabled", "1"),
     ("LastUpdateTime", datetime.datetime.utcnow().isoformat().encode('utf8')),
     ("OpenpilotEnabledToggle", "1"),
-    ("VisionRadarToggle", "0"),
     ("LaneChangeEnabled", "1"),
     ("IsDriverViewEnabled", "0"),
+    ("VisionRadarToggle", "0"),
     # TODO: get the vin and config automagically on the first start. this is hardcoded to my radar. will be different for you!
+    ("TeslaRadarActivate", "0"),
     ("TeslaRadarVin", "5YJXCAE23GF007137"),
     # offset of the radar location on the front of the car. measured in meters. positive is to the right tire. value is for 2017 Civic Hatchback
     ("TeslaRadarOffset", "-0.58"),
