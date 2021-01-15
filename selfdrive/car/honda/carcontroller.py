@@ -173,7 +173,7 @@ class CarController():
           self.last_wheeltick_ct = 0
           self.stopped_frame = 0
 
-      elif accel > 0 and (0.3 >= CS.out.vEgo >= 0):
+      if accel >= 0 and (0.3 >= CS.out.vEgo >= 0):
         starting = 1
       apply_accel = interp(accel, BOSCH_ACCEL_LOOKUP_BP, BOSCH_ACCEL_LOOKUP_V)
       apply_gas = interp(accel, BOSCH_GAS_LOOKUP_BP, BOSCH_GAS_LOOKUP_V)
