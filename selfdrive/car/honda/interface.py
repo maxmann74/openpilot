@@ -447,17 +447,17 @@ class CarInterface(CarInterfaceBase):
     ret.tireStiffnessFront, ret.tireStiffnessRear = scale_tire_stiffness(ret.mass, ret.wheelbase, ret.centerToFront,
                                                                          tire_stiffness_factor=tire_stiffness_factor)
 
-    if candidate in HONDA_BOSCH:
-      ret.gasMaxBP = [0.0, 5., 10., 22., 35.] # m/s
-      ret.gasMaxV = [0.33, 0.23, 0.18, 0.17, 0.16]
-      ret.brakeMaxBP = [0.] #[5., 20.]  # m/s
-      ret.brakeMaxV = [1.]  #[1., 0.8]   # max brake allowed
-    else:
+    if useTeslaRadar:
       ret.gasMaxBP = [0.]  # m/s
       ret.gasMaxV = [1.] # max gas allowed
       ret.brakeMaxBP = [5., 20.]  # m/s
       ret.brakeMaxV = [1., 0.8]   # max brake allowed
-
+    else useVisionRadar:
+      ret.gasMaxBP = [0.0, 5., 10., 22., 35.] # m/s
+      ret.gasMaxV = [0.33, 0.23, 0.18, 0.17, 0.16]
+      ret.brakeMaxBP = [0.] #[5., 20.]  # m/s
+      ret.brakeMaxV = [1.]  #[1., 0.8]   # max brake allowed
+      
     ret.stoppingControl = True
     #ret.startAccel = 0.5
 
