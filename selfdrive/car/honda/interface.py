@@ -203,12 +203,20 @@ class CarInterface(CarInterfaceBase):
       ret.centerToFront = CivicParams.CENTER_TO_FRONT
       ret.steerRatio = 15.38  # 10.93 is end-to-end spec
       ret.lateralParams.torqueBP, ret.lateralParams.torqueV = [[0, 2564, 8000], [0, 2564, 3840]]
-      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[1.1, 0.25], [0.33, 0.075]] # my mod is 3.125x
+      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[1.0, 0.25], [0.3, 0.075]] # my mod is 3.125x
       tire_stiffness_factor = 1.
-      ret.longitudinalTuning.kpBP = [0., 5., 35.]
-      ret.longitudinalTuning.kpV = [1.2, 0.8, 0.5]
-      ret.longitudinalTuning.kiBP = [0., 35.]
-      ret.longitudinalTuning.kiV = [0.18, 0.12]
+      if useVisionRadar:
+        ret.longitudinalTuning.kpBP = [0., 5., 35.]
+        ret.longitudinalTuning.kpV = [1.2, 0.8, 0.5]
+        ret.longitudinalTuning.kiBP = [0., 35.]
+        ret.longitudinalTuning.kiV = [0.18, 0.12]
+      else:
+        ret.longitudinalTuning.kpBP = [0., 5., 35.] #todo: tune for Tesla Radar
+        ret.longitudinalTuning.kpV = [1.2, 0.8, 0.5]
+        ret.longitudinalTuning.kiBP = [0., 35.]
+        ret.longitudinalTuning.kiV = [0.18, 0.12]
+        
+    
 
     elif candidate in (CAR.ACCORD, CAR.ACCORD_15, CAR.ACCORDH):
       stop_and_go = True
@@ -440,13 +448,14 @@ class CarInterface(CarInterfaceBase):
                                                                          tire_stiffness_factor=tire_stiffness_factor)
 
     if candidate in HONDA_BOSCH:
+    elif useVisionRadar:
       ret.gasMaxBP = [0.0, 5., 10., 22., 35.] # m/s
       ret.gasMaxV = [0.33, 0.23, 0.18, 0.17, 0.16]
       ret.brakeMaxBP = [0.] #[5., 20.]  # m/s
       ret.brakeMaxV = [1.]  #[1., 0.8]   # max brake allowed
     else:
       ret.gasMaxBP = [0.]  # m/s
-      ret.gasMaxV = [0.6] if ret.enableGasInterceptor else [0.]  # max gas allowed
+      ret.gasMaxV = [1.] # max gas allowed
       ret.brakeMaxBP = [5., 20.]  # m/s
       ret.brakeMaxV = [1., 0.8]   # max brake allowed
 
