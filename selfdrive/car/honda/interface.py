@@ -137,8 +137,8 @@ class CarInterface(CarInterfaceBase):
     if candidate in HONDA_BOSCH:
       ret.safetyModel = car.CarParams.SafetyModel.hondaBoschHarness
       ret.enableCamera = True
-      useVisionRadar = True
-      useTeslaRadar = False
+      useVisionRadar = params.get("VisionRadarToggle", encoding='utf8') == "1"
+      useTeslaRadar = params.get("TeslaRadarActivate", encoding='utf8') == "1"
       ret.openpilotLongitudinalControl = useVisionRadar or useTeslaRadar
       ret.radarOffCan = not useTeslaRadar
       ret.radarTimeStep = 0.06 if useTeslaRadar else 0.05
