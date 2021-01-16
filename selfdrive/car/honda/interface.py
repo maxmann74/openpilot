@@ -448,7 +448,6 @@ class CarInterface(CarInterfaceBase):
                                                                          tire_stiffness_factor=tire_stiffness_factor)
 
     if candidate in HONDA_BOSCH:
-    elif useVisionRadar:
       ret.gasMaxBP = [0.0, 5., 10., 22., 35.] # m/s
       ret.gasMaxV = [0.33, 0.23, 0.18, 0.17, 0.16]
       ret.brakeMaxBP = [0.] #[5., 20.]  # m/s
